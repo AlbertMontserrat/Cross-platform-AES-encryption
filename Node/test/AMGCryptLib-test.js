@@ -2,25 +2,25 @@
 
 var chai = require('chai'),
     expect = chai.expect,
-    CryptLib = require('../dist/cryptLib.js');
+    AMGCryptLib = require('../dist/AMGCryptLib.js');
 
-describe('CryptLib', function() {
-  var cryptLib;
+describe('AMGCryptLib', function() {
+  var AMGCryptLib;
 
   before(function() {
-    cryptLib = new CryptLib();
+    AMGCryptLib = new AMGCryptLib();
   });
 
   after(function() {
-    cryptLib = null;
+    AMGCryptLib = null;
   });
 
   describe('generateRandomIV()', function() {
-    var errorMessage = 'cryptLib.generateRandomIV() -> needs length or in wrong format';
+    var errorMessage = 'AMGCryptLib.generateRandomIV() -> needs length or in wrong format';
 
     it('no length should throw error', function() {
       try {
-        cryptLib.generateRandomIV()
+        AMGCryptLib.generateRandomIV()
       } catch (message) {
         expect(message).to.equal(errorMessage);
       }
@@ -28,19 +28,19 @@ describe('CryptLib', function() {
 
     it('non-numeric and non-whole number length should throw error', function() {
       try{
-        cryptLib.generateRandomIV('abc');
+        AMGCryptLib.generateRandomIV('abc');
       } catch (message) {
         expect(message).to.equal(errorMessage);
       }
 
       try{
-        cryptLib.generateRandomIV('12a'); 
+        AMGCryptLib.generateRandomIV('12a'); 
       } catch (message) {
         expect(message).to.equal(errorMessage);
       }
 
       try{
-        cryptLib.generateRandomIV('12.2'); 
+        AMGCryptLib.generateRandomIV('12.2'); 
       } catch (message) {
         expect(message).to.equal(errorMessage);
       }
@@ -48,7 +48,7 @@ describe('CryptLib', function() {
 
     it('negative length should throw error', function() {
       try {
-        cryptLib.generateRandomIV('-1');
+        AMGCryptLib.generateRandomIV('-1');
       } catch (message) {
         expect(message).to.equal(errorMessage);
       }
@@ -56,39 +56,39 @@ describe('CryptLib', function() {
 
     it('length = 0, should throw error', function() {
       try {
-        cryptLib.generateRandomIV(0);
+        AMGCryptLib.generateRandomIV(0);
       } catch (message) {
         expect(message).to.equal(errorMessage);
       }
 
       try {
-        cryptLib.generateRandomIV('0');
+        AMGCryptLib.generateRandomIV('0');
       } catch (message) {
         expect(message).to.equal(errorMessage);
       }
     });
 
     it('length = 2', function() {
-      var iv = cryptLib.generateRandomIV(2);
+      var iv = AMGCryptLib.generateRandomIV(2);
       expect(iv).to.have.length(2);
       expect(iv).to.be.string;
     });
 
     it('length = 100', function() {
-      var iv = cryptLib.generateRandomIV(100);
+      var iv = AMGCryptLib.generateRandomIV(100);
       expect(iv).to.have.length(100);
       expect(iv).to.be.string;
     });
   });
 
   describe('getHashSha256()', function() {
-    var lengthErrorMessage = 'cryptLib.getHashSha256() -> needs length or in wrong format',
-        keyErrorMessage = 'cryptLib.getHashSha256() -> needs key',
+    var lengthErrorMessage = 'AMGCryptLib.getHashSha256() -> needs length or in wrong format',
+        keyErrorMessage = 'AMGCryptLib.getHashSha256() -> needs key',
         validKey = 'key';
 
     it('no key should throw error', function() {
       try {
-        cryptLib.getHashSha256(null,2);
+        AMGCryptLib.getHashSha256(null,2);
       } catch (message) {
         expect(message).to.equal(keyErrorMessage);
       }
@@ -96,7 +96,7 @@ describe('CryptLib', function() {
 
     it('no length should throw error', function() {
       try {
-        cryptLib.getHashSha256(validKey, null);
+        AMGCryptLib.getHashSha256(validKey, null);
       } catch (message) {
         expect(message).to.equal(lengthErrorMessage);
       }
@@ -104,19 +104,19 @@ describe('CryptLib', function() {
 
     it('non-numeric and non-whole number length should throw error', function() {
       try{
-        cryptLib.getHashSha256(validKey, 'abc');
+        AMGCryptLib.getHashSha256(validKey, 'abc');
       } catch (message) {
         expect(message).to.equal(lengthErrorMessage);
       }
 
       try{
-        cryptLib.getHashSha256(validKey, '12a'); 
+        AMGCryptLib.getHashSha256(validKey, '12a'); 
       } catch (message) {
         expect(message).to.equal(lengthErrorMessage);
       }
 
       try{
-        cryptLib.getHashSha256(validKey, '12.2'); 
+        AMGCryptLib.getHashSha256(validKey, '12.2'); 
       } catch (message) {
         expect(message).to.equal(lengthErrorMessage);
       }
@@ -124,13 +124,13 @@ describe('CryptLib', function() {
 
     it('negative length should throw error', function() {
       try {
-        cryptLib.getHashSha256(validKey, '-1');
+        AMGCryptLib.getHashSha256(validKey, '-1');
       } catch (message) {
         expect(message).to.equal(lengthErrorMessage);
       }
 
       try {
-        cryptLib.getHashSha256(validKey, -1);
+        AMGCryptLib.getHashSha256(validKey, -1);
       } catch (message) {
         expect(message).to.equal(lengthErrorMessage);
       }
@@ -138,45 +138,45 @@ describe('CryptLib', function() {
 
     it('length = 0, should throw error', function() {
       try {
-        cryptLib.getHashSha256(validKey, 0);
+        AMGCryptLib.getHashSha256(validKey, 0);
       } catch (message) {
         expect(message).to.equal(lengthErrorMessage);
       }
 
       try {
-        cryptLib.getHashSha256(validKey, '0');
+        AMGCryptLib.getHashSha256(validKey, '0');
       } catch (message) {
         expect(message).to.equal(lengthErrorMessage);
       }
     });
 
     it('valid key with length = 2', function() {
-      var sha = cryptLib.getHashSha256(validKey, 2);
+      var sha = AMGCryptLib.getHashSha256(validKey, 2);
       expect(sha).to.have.length(2);
       expect(sha).to.be.string;
     });
 
     it('valid key with length = 64', function() {
-      var sha = cryptLib.getHashSha256(validKey, 64);
+      var sha = AMGCryptLib.getHashSha256(validKey, 64);
       expect(sha).to.have.length(64);
       expect(sha).to.be.string;
     });
 
     it('valid key with length = 100 should return 64 char sha', function() {
-      var sha = cryptLib.getHashSha256(validKey, 100);
+      var sha = AMGCryptLib.getHashSha256(validKey, 100);
       expect(sha).to.have.length(64);
       expect(sha).to.be.string;
     });
   });
 
   describe('encrypt() and decrypt() tests', function() {
-    var errorMessage = 'cryptLib._encryptDecrypt: -> key and plain or encrypted text required',
+    var errorMessage = 'AMGCryptLib._encryptDecrypt: -> key and plain or encrypted text required',
         plainText = 'This is the plain text that will be encrypted and decrypted',
         myKey = 'myKey';
 
     it('encrypt() with no plain text should throw error', function() {
       try {
-        cryptLib.encrypt(null, 'key123', 'iv123');
+        AMGCryptLib.encrypt(null, 'key123', 'iv123');
       } catch(error) {
         expect(error).to.equal(errorMessage);
       }
@@ -184,7 +184,7 @@ describe('CryptLib', function() {
 
     it('encrypt() with no key should throw error', function() {
       try {
-        cryptLib.encrypt(plainText, null, 'iv123');
+        AMGCryptLib.encrypt(plainText, null, 'iv123');
       } catch(error) {
         expect(error).to.equal(errorMessage);
       }
@@ -192,33 +192,33 @@ describe('CryptLib', function() {
 
     it('basic encrypt() decrypt() locally : 0 char iv and 2 char key', function() {
       var iv = '',
-          keyHashed = cryptLib.getHashSha256(myKey, 2),
-          encryptedText = cryptLib.encrypt(plainText, keyHashed, iv),
-          regularText = cryptLib.decrypt(encryptedText, keyHashed, iv);
+          keyHashed = AMGCryptLib.getHashSha256(myKey, 2),
+          encryptedText = AMGCryptLib.encrypt(plainText, keyHashed, iv),
+          regularText = AMGCryptLib.decrypt(encryptedText, keyHashed, iv);
       expect(regularText).to.equal(plainText);
     });
 
     it('basic encrypt() decrypt() locally : 2 char iv and 2 char key', function() {
-      var iv = cryptLib.generateRandomIV(2),
-          keyHashed = cryptLib.getHashSha256(myKey, 2),
-          encryptedText = cryptLib.encrypt(plainText, keyHashed, iv),
-          decryptedText = cryptLib.decrypt(encryptedText, keyHashed, iv);
+      var iv = AMGCryptLib.generateRandomIV(2),
+          keyHashed = AMGCryptLib.getHashSha256(myKey, 2),
+          encryptedText = AMGCryptLib.encrypt(plainText, keyHashed, iv),
+          decryptedText = AMGCryptLib.decrypt(encryptedText, keyHashed, iv);
       expect(decryptedText).to.equal(plainText);
     });
 
     it('basic encrypt() decrypt() locally : 16 char iv and 32 char key', function() {
-      var iv = cryptLib.generateRandomIV(16),
-          keyHashed = cryptLib.getHashSha256(myKey, 32),
-          encryptedText = cryptLib.encrypt(plainText, keyHashed, iv),
-          decryptedText = cryptLib.decrypt(encryptedText, keyHashed, iv);
+      var iv = AMGCryptLib.generateRandomIV(16),
+          keyHashed = AMGCryptLib.getHashSha256(myKey, 32),
+          encryptedText = AMGCryptLib.encrypt(plainText, keyHashed, iv),
+          decryptedText = AMGCryptLib.decrypt(encryptedText, keyHashed, iv);
       expect(decryptedText).to.equal(plainText);
     });
 
     it('basic encrypt() decrypt() locally : 20 char iv and 80 char key', function() {
-      var iv = cryptLib.generateRandomIV(20),
-          keyHashed = cryptLib.getHashSha256(myKey, 80),
-          encryptedText = cryptLib.encrypt(plainText, keyHashed, iv),
-          decryptedText = cryptLib.decrypt(encryptedText, keyHashed, iv);
+      var iv = AMGCryptLib.generateRandomIV(20),
+          keyHashed = AMGCryptLib.getHashSha256(myKey, 80),
+          encryptedText = AMGCryptLib.encrypt(plainText, keyHashed, iv),
+          decryptedText = AMGCryptLib.decrypt(encryptedText, keyHashed, iv);
       expect(decryptedText).to.equal(plainText);
     });
 
@@ -228,7 +228,7 @@ describe('CryptLib', function() {
           cSharpPlainText = 'C# text that\'s going to be decrypted',
           cSharpCipher = 'M2rfrn9DqNHJe3Hev9nMxKKgIHoqUsc7FJM+tBGxIrl3Wk9UeKIQ5fRUUZF3q2i5',
           nodeDecrpytedText;
-      nodeDecrpytedText = cryptLib.decrypt(cSharpCipher, cSharpKey, cSharpIv);
+      nodeDecrpytedText = AMGCryptLib.decrypt(cSharpCipher, cSharpKey, cSharpIv);
       expect(nodeDecrpytedText).to.equal(cSharpPlainText);
     });
 
@@ -238,7 +238,7 @@ describe('CryptLib', function() {
           cSharpPlainText = 'C# text that\'s going to be decrypted',
           cSharpCipher = '90iAiA80rSiyEoCAnLC9KNYt41koQKs2Lo5NzciyELkoZGne+BAv1ScMXSWETyAL',
           nodeDecrpytedText;
-      nodeDecrpytedText = cryptLib.decrypt(cSharpCipher, cSharpKey, cSharpIv);
+      nodeDecrpytedText = AMGCryptLib.decrypt(cSharpCipher, cSharpKey, cSharpIv);
       expect(nodeDecrpytedText).to.equal(cSharpPlainText);
     });
 
@@ -248,7 +248,7 @@ describe('CryptLib', function() {
           cSharpPlainText = 'C# text that\'s going to be decrypted',
           cSharpCipher = '0kv/H19UoAN21Et5jSNTM/yKQAaEPiB5Y6qugTQs3kvNuwMLBiOeFwMFnYr9KZBa',
           nodeDecrpytedText;
-      nodeDecrpytedText = cryptLib.decrypt(cSharpCipher, cSharpKey, cSharpIv);
+      nodeDecrpytedText = AMGCryptLib.decrypt(cSharpCipher, cSharpKey, cSharpIv);
       expect(nodeDecrpytedText).to.equal(cSharpPlainText);
     });
   });

@@ -1,7 +1,7 @@
 /*global require*/
 
-var CryptLib = require('cryptlib'),
-    _crypt = new CryptLib(),
+var AMGCryptLib = require('amgcryptlib'),
+    _crypt = new AMGCryptLib(),
     plainText = 'This is the text to be encrypted',
     iv = _crypt.generateRandomIV(16), //16 bytes = 128 bit
     key = _crypt.getHashSha256('my secret key', 32), //32 bytes = 256 bits

@@ -7,8 +7,8 @@ import BufferList from 'bl';
 import isArray from 'lodash.isarray';
 
 /**
- * CrossPlatform CryptLib
-   * This cross platform CryptLib uses AES 256 for encryption. This library can
+ * CrossPlatform AMGCryptLib
+   * This cross platform AMGCryptLib uses AES 256 for encryption. This library can
    * be used for encryption and de-cryption of strings on iOS, Android, Windows
    * and Node platform.
    * Features:
@@ -16,7 +16,7 @@ import isArray from 'lodash.isarray';
    * 2. Random IV generation. 
    * 3. Provision for SHA256 hashing of key. 
  */
-export default class CryptLib {
+export default class AMGCryptLib {
 
   constructor() {
     this._maxKeySize = 32;
@@ -44,7 +44,7 @@ export default class CryptLib {
   _encryptDecrypt(text, key, initVector, isEncrypt) {
 
     if (!text || !key) {
-      throw 'cryptLib._encryptDecrypt: -> key and plain or encrypted text '+
+      throw 'AMGCryptLib._encryptDecrypt: -> key and plain or encrypted text '+
        'required';
     }
 
@@ -98,7 +98,7 @@ export default class CryptLib {
    */
   generateRandomIV(length) {
     if (!this._isCorrectLength(length)) {
-      throw 'cryptLib.generateRandomIV() -> needs length or in wrong format';
+      throw 'AMGCryptLib.generateRandomIV() -> needs length or in wrong format';
     }
 
     length = parseInt(length, 10);
@@ -121,11 +121,11 @@ export default class CryptLib {
    */
   getHashSha256(key, length) {
     if (!key) {
-      throw 'cryptLib.getHashSha256() -> needs key';
+      throw 'AMGCryptLib.getHashSha256() -> needs key';
     }
 
     if (!this._isCorrectLength(length)) {
-      throw 'cryptLib.getHashSha256() -> needs length or in wrong format';
+      throw 'AMGCryptLib.getHashSha256() -> needs length or in wrong format';
     }
 
     return crypto.createHash('sha256')

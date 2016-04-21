@@ -1,4 +1,4 @@
-CryptLib
+AMGCryptLib
 =========
 
 A module to encrypt/decrypt string in Node, written in ES6 (src folder) and transpiled using Babel to ES5(dist folder).
@@ -10,12 +10,12 @@ Companion libs can be found here: https://github.com/Pakhee/Cross-platform-AES-e
 
 ## Installation
 
-  npm install cryptlib --save
+  npm install AMGCryptLib --save
 
 ## Usage
 
-	var CryptLib = require('cryptlib'),
-		_crypt = new CryptLib(),
+	var AMGCryptLib = require('AMGCryptLib'),
+		_crypt = new AMGCryptLib(),
 		plainText = 'This is the text to be encrypted',
 		iv = _crypt.generateRandomIV(16), //16 bytes = 128 bit
 		key = _crypt.getHashSha256('my secret key', 32), //32 bytes = 256 bits

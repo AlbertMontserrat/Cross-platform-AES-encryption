@@ -25,8 +25,8 @@ var _lodashIsarray = require('lodash.isarray');
 var _lodashIsarray2 = _interopRequireDefault(_lodashIsarray);
 
 /**
- * CrossPlatform CryptLib
-   * This cross platform CryptLib uses AES 256 for encryption. This library can
+ * CrossPlatform AMGCryptLib
+   * This cross platform AMGCryptLib uses AES 256 for encryption. This library can
    * be used for encryption and de-cryption of strings on iOS, Android, Windows
    * and Node platform.
    * Features:
@@ -35,9 +35,9 @@ var _lodashIsarray2 = _interopRequireDefault(_lodashIsarray);
    * 3. Provision for SHA256 hashing of key. 
  */
 
-var CryptLib = (function () {
-  function CryptLib() {
-    _classCallCheck(this, CryptLib);
+var AMGCryptLib = (function () {
+  function AMGCryptLib() {
+    _classCallCheck(this, AMGCryptLib);
 
     this._maxKeySize = 32;
     this._maxIVSize = 16;
@@ -45,7 +45,7 @@ var CryptLib = (function () {
     this._characterMatrixForRandomIVStringGeneration = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '-', '_'];
   }
 
-  _createClass(CryptLib, [{
+  _createClass(AMGCryptLib, [{
     key: '_encryptDecrypt',
 
     /**
@@ -61,7 +61,7 @@ var CryptLib = (function () {
     value: function _encryptDecrypt(text, key, initVector, isEncrypt) {
 
       if (!text || !key) {
-        throw 'cryptLib._encryptDecrypt: -> key and plain or encrypted text ' + 'required';
+        throw 'AMGCryptLib._encryptDecrypt: -> key and plain or encrypted text ' + 'required';
       }
 
       var ivBl = new _bl2['default'](),
@@ -86,10 +86,13 @@ var CryptLib = (function () {
 
       if (isEncrypt) {
         encryptor = _crypto2['default'].createCipheriv(this._algorithm, keyBl.toString(), ivBl.toString());
-        encryptor.setEncoding('base64');
-        encryptor.write(text);
-        encryptor.end();
-        return encryptor.read();
+        //encryptor.setEncoding(this._encoding);
+        //encryptor.write(text);
+        //encryptor.end();
+        //return encryptor.read();
+        var encrypted = encryptor.update(text, this._charset, this._encoding);
+        encrypted += encryptor.final(this._encoding);
+        return encrypted;
       }
 
       decryptor = _crypto2['default'].createDecipheriv(this._algorithm, keyBl.toString(), ivBl.toString());
@@ -118,7 +121,7 @@ var CryptLib = (function () {
      */
     value: function generateRandomIV(length) {
       if (!this._isCorrectLength(length)) {
-        throw 'cryptLib.generateRandomIV() -> needs length or in wrong format';
+        throw 'AMGCryptLib.generateRandomIV() -> needs length or in wrong format';
       }
 
       length = parseInt(length, 10);
@@ -142,11 +145,11 @@ var CryptLib = (function () {
      */
     value: function getHashSha256(key, length) {
       if (!key) {
-        throw 'cryptLib.getHashSha256() -> needs key';
+        throw 'AMGCryptLib.getHashSha256() -> needs key';
       }
 
       if (!this._isCorrectLength(length)) {
-        throw 'cryptLib.getHashSha256() -> needs length or in wrong format';
+        throw 'AMGCryptLib.getHashSha256() -> needs length or in wrong format';
       }
 
       return _crypto2['default'].createHash('sha256').update(key).digest('hex').substring(0, length);
@@ -181,8 +184,8 @@ var CryptLib = (function () {
     }
   }]);
 
-  return CryptLib;
+  return AMGCryptLib;
 })();
 
-exports['default'] = CryptLib;
+exports['default'] = AMGCryptLib;
 module.exports = exports['default'];

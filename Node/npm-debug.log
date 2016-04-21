@@ -1,0 +1,116 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'publish' ]
+2 info using npm@2.11.3
+3 info using node@v0.12.7
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec { raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/iboomobile/Desktop/GIT/Cross-platform-AES-encryption/Node',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/iboomobile/.npm/AMGCryptLib/1.0.1/package.tgz not in flight; packing
+9 verbose tar pack [ '/Users/iboomobile/.npm/AMGCryptLib/1.0.1/package.tgz',
+9 verbose tar pack   '/Users/iboomobile/Desktop/GIT/Cross-platform-AES-encryption/Node' ]
+10 verbose tarball /Users/iboomobile/.npm/AMGCryptLib/1.0.1/package.tgz
+11 verbose folder /Users/iboomobile/Desktop/GIT/Cross-platform-AES-encryption/Node
+12 info prepublish AMGCryptLib@1.0.1
+13 verbose addLocalTarball adding from inside cache /Users/iboomobile/.npm/AMGCryptLib/1.0.1/package.tgz
+14 silly cache afterAdd AMGCryptLib@1.0.1
+15 verbose afterAdd /Users/iboomobile/.npm/AMGCryptLib/1.0.1/package/package.json not in flight; writing
+16 verbose afterAdd /Users/iboomobile/.npm/AMGCryptLib/1.0.1/package/package.json written
+17 silly publish { name: 'AMGCryptLib',
+17 silly publish   version: '1.0.1',
+17 silly publish   author: { name: 'Abdul Khan' },
+17 silly publish   main: 'dist/AMGCryptLib.js',
+17 silly publish   description: 'AMGCryptLib uses AES 256 for encryption or decryption. This library can be used for encryption and decryption of strings using Node on iOS, Android and Windows',
+17 silly publish   contributors:
+17 silly publish    [ { name: 'Abdul Khan', email: 'invalidred@gmail.com' },
+17 silly publish      { name: 'Alexey Novak', email: 'alexey.novak.mail@gmail.com' },
+17 silly publish      { name: 'Albert Montserrat',
+17 silly publish        email: 'albert.montserrat.gambus@gmail.com' } ],
+17 silly publish   scripts:
+17 silly publish    { start: 'node index.js',
+17 silly publish      test: 'node node_modules/mocha/bin/mocha --reporter spec test/*' },
+17 silly publish   repository:
+17 silly publish    { type: 'git',
+17 silly publish      url: 'git+ssh://git@github.com/invalidred/Cross-platform-AES-encryption.git' },
+17 silly publish   keywords: [ 'AES node', 'Cross Platform', 'Encryption', 'Decryption' ],
+17 silly publish   dependencies:
+17 silly publish    { bl: '1.0.0',
+17 silly publish      'lodash.isarray': '3.0.4',
+17 silly publish      'lodash.isfunction': '3.0.6' },
+17 silly publish   devDependencies:
+17 silly publish    { babel: '^5.2.17',
+17 silly publish      chai: '^2.3.0',
+17 silly publish      gulp: '^3.8.11',
+17 silly publish      'gulp-babel': '^5.1.0',
+17 silly publish      'gulp-mocha': '^2.0.1',
+17 silly publish      mocha: '^2.2.4' },
+17 silly publish   engine: 'node >= 0.10.x',
+17 silly publish   homepage: 'https://github.com/invalidred/Cross-platform-AES-encryption',
+17 silly publish   bugs: { url: 'https://github.com/Pakhee/Cross-platform-AES-encryption/issues' },
+17 silly publish   private: false,
+17 silly publish   license: 'Apache',
+17 silly publish   _npmVersion: '2.5.1',
+17 silly publish   _nodeVersion: '0.12.0',
+17 silly publish   _npmUser: { name: 'invalidred', email: 'invalidred@gmail.com' },
+17 silly publish   maintainers: [ { name: 'Abdul Khan', email: 'invalidred@gmail.com' } ],
+17 silly publish   readme: 'AMGCryptLib\r\n=========\r\n\r\nA module to encrypt/decrypt string in Node, written in ES6 (src folder) and transpiled using Babel to ES5(dist folder).\r\n\r\nUsing companion framework libraries, you should be able to encrypt/decrypt between node, iOS, Android and Windows platforms.\r\n\r\nCompanion libs can be found here: https://github.com/Pakhee/Cross-platform-AES-encryption\r\n\r\n\r\n## Installation\r\n\r\n  npm install AMGCryptLib --save\r\n\r\n## Usage\r\n\r\n\tvar AMGCryptLib = require(\'AMGCryptLib\'),\r\n\t\t_crypt = new AMGCryptLib(),\r\n\t\tplainText = \'This is the text to be encrypted\',\r\n\t\tiv = _crypt.generateRandomIV(16), //16 bytes = 128 bit\r\n\t\tkey = _crypt.getHashSha256(\'my secret key\', 32), //32 bytes = 256 bits\r\n\t\tcypherText = _crypt.encrypt(plainText, key, iv),\r\n        originalText = _crypt.decrypt(cypherText, key, iv);\r\n\r\n## Run Code Sample\r\n  \r\n  npm start\r\n\r\n## Tests\r\n\r\n  npm test\r\n\r\n## Contributing\r\n\r\nIn lieu of a formal styleguide, take care to maintain the existing coding style.\r\nAdd unit tests for any new or changed functionality. Lint and test your code.\r\n\r\n## Release History\r\n\r\n* 0.1.0 Initial release\r\n\r\n## License\r\n\r\nApache License; see [LICENSE](../LICENSE).\r\n\r\n(c) 2015 by Abdul Khan\r\n',
+17 silly publish   readmeFilename: 'README.md',
+17 silly publish   _id: 'AMGCryptLib@1.0.1',
+17 silly publish   _shasum: '0408c4e12e7ed42cf535d49a7979bf785244b898',
+17 silly publish   _from: '.' }
+18 verbose getPublishConfig undefined
+19 silly mapToRegistry name AMGCryptLib
+20 silly mapToRegistry using default registry
+21 silly mapToRegistry registry https://registry.npmjs.org/
+22 silly mapToRegistry uri https://registry.npmjs.org/AMGCryptLib
+23 verbose publish registryBase https://registry.npmjs.org/
+24 silly publish uploading /Users/iboomobile/.npm/AMGCryptLib/1.0.1/package.tgz
+25 verbose request uri https://registry.npmjs.org/AMGCryptLib
+26 verbose request sending authorization for write operation
+27 info attempt registry request try #1 at 17:00:46
+28 verbose request using bearer token for auth
+29 verbose request id 29b4dc419cfea07f
+30 http request PUT https://registry.npmjs.org/AMGCryptLib
+31 http 403 https://registry.npmjs.org/AMGCryptLib
+32 verbose headers { 'content-type': 'application/json',
+32 verbose headers   'cache-control': 'max-age=300',
+32 verbose headers   'content-length': '95',
+32 verbose headers   'accept-ranges': 'bytes',
+32 verbose headers   date: 'Thu, 21 Apr 2016 15:00:48 GMT',
+32 verbose headers   via: '1.1 varnish',
+32 verbose headers   connection: 'keep-alive',
+32 verbose headers   'x-served-by': 'cache-fra1240-FRA',
+32 verbose headers   'x-cache': 'MISS',
+32 verbose headers   'x-cache-hits': '0',
+32 verbose headers   'x-timer': 'S1461250847.345528,VS0,VE1179',
+32 verbose headers   vary: 'Accept-Encoding' }
+33 verbose request invalidating /Users/iboomobile/.npm/registry.npmjs.org/AMGCryptLib on PUT
+34 error publish Failed PUT 403
+35 verbose stack Error: "You cannot publish over the previously published version 1.0.1." : AMGCryptLib
+35 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:247:14)
+35 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:170:14)
+35 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:354:22)
+35 verbose stack     at Request.emit (events.js:110:17)
+35 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1207:14)
+35 verbose stack     at Request.emit (events.js:129:20)
+35 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1153:12)
+35 verbose stack     at IncomingMessage.emit (events.js:129:20)
+35 verbose stack     at _stream_readable.js:908:16
+35 verbose stack     at process._tickCallback (node.js:355:11)
+36 verbose statusCode 403
+37 verbose pkgid AMGCryptLib
+38 verbose cwd /Users/iboomobile/Desktop/GIT/Cross-platform-AES-encryption/Node
+39 error Darwin 15.3.0
+40 error argv "node" "/usr/local/bin/npm" "publish"
+41 error node v0.12.7
+42 error npm  v2.11.3
+43 error code E403
+44 error "You cannot publish over the previously published version 1.0.1." : AMGCryptLib
+45 error If you need help, you may report this error at:
+45 error     <https://github.com/npm/npm/issues>
+46 verbose exit [ 1, true ]

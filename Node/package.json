@@ -1,11 +1,11 @@
 {
-  "name": "cryptlib",
-  "version": "1.0.0",
+  "name": "AMGCryptLib",
+  "version": "1.0.1",
   "author": {
     "name": "Abdul Khan"
   },
-  "main": "dist/cryptLib.js",
-  "description": "CryptLib uses AES 256 for encryption or decryption. This library can be used for encryption and decryption of strings using Node on iOS, Android and Windows",
+  "main": "dist/AMGCryptLib.js",
+  "description": "AMGCryptLib uses AES 256 for encryption or decryption. This library can be used for encryption and decryption of strings using Node on iOS, Android and Windows",
   "contributors": [
     {
       "name": "Abdul Khan",
@@ -14,6 +14,10 @@
     {
       "name": "Alexey Novak",
       "email": "alexey.novak.mail@gmail.com"
+    },
+    {
+      "name": "Albert Montserrat",
+      "email": "albert.montserrat.gambus@gmail.com"
     }
   ],
   "scripts": {
